@@ -30,4 +30,7 @@ return [
     'added' => 'Added',
     'changed' => 'Changed',
     'removed' => 'Removed',
+    'deleted' => 'Deleted',
+    'delete' => 'Delete',
+    'module cannot be deleted' => 'This is a core module, it can not be deleted.',
 ];

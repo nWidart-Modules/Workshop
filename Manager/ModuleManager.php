@@ -5,6 +5,8 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Pingpong\Modules\Module;
 use Symfony\Component\Yaml\Parser;
+use Illuminate\Support\Facades\Artisan;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class ModuleManager
 {
@@ -123,6 +125,44 @@ class ModuleManager
             $module = $this->module->get($moduleToEnable);
             $module->enable();
         }
+    }
+
+    /**
+     * Delete the given module
+     * @param Module $module
+     */
+    public function deleteModule(Module $module)
+    {
+        $coreModules = $this->getCoreModules();
+        if (!isset($coreModules[strtolower($module->name)])) {
+            //TODO: $this->deleteModulePermissionsAndRoles($module->name);
+            $this->deleteModuleAssets($module->name);
+            $this->deleteModuleTables($module->name);
+            $this->module->delete($module);
+        }
+
+    }
+
+    /**
+     * Delete the given module's tables
+     * @param string $moduleName
+     */
+    private function deleteModuleTables($moduleName)
+    {
+        //TODO Find All module tables and remove
+        $output = new BufferedOutput();
+        Artisan::call('module:migrate-rollback', ['module' => strtolower($moduleName)], $output);
+    }
+
+    /**
+    * Delete given module's assets folder
+    * @param string $moduleName
+    */
+
+    private function deleteModuleAssets($moduleName)
+    {
+        $assets = public_path().'/modules/'. strtolower($moduleName);
+        $this->finder->deleteDirectory($assets);
     }
 
     /**

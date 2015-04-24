@@ -6,6 +6,7 @@ return [
         'show',
         'disable',
         'enable',
+        'delete'
     ],
     /*'workshop.workbench' => [
         'index',
