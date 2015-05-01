@@ -102,7 +102,7 @@ class ModulesController extends AdminBaseController
      * @param Module $module
      * @return mixed
      */
-    public function delete(Module $module)
+    public function destroy(Module $module)
     {
         if ($this->isCoreModule($module)) {
             return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])

@@ -54,7 +54,7 @@
                                 {{ trans("workshop::modules.{$status}") }}
                             </button>
                         {!! Form::close() !!}
-                        {!! Form::open(['route' => ["admin.workshop.modules.delete", $module->getName()], 'method' => 'post']) !!}
+                        {!! Form::open(['route' => ["admin.workshop.modules.destroy", $module->getName()], 'method' => 'post']) !!}
                         <button class="btn btn-box-tool" data-toggle="tooltip" type="submit"
                                 title="" data-original-title="{{ trans("workshop::modules.delete") }}" onClick="confirm('Are you sure?');">
                             <i class="fa fa-trash"></i>

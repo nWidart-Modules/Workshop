@@ -5,8 +5,6 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Pingpong\Modules\Module;
 use Symfony\Component\Yaml\Parser;
-use Illuminate\Support\Facades\Artisan;
-use Symfony\Component\Console\Output\BufferedOutput;
 
 class ModuleManager
 {
@@ -134,13 +132,12 @@ class ModuleManager
     public function deleteModule(Module $module)
     {
         $coreModules = $this->getCoreModules();
-        if (!isset($coreModules[strtolower($module->name)])) {
+        if (!isset($coreModules[$module->getLowerName()])) {
             //TODO: $this->deleteModulePermissionsAndRoles($module->name);
-            $this->deleteModuleAssets($module->name);
-            $this->deleteModuleTables($module->name);
+            //$this->deleteModuleAssets($module->getLowerName());
+            $this->deleteModuleTables($module->getLowerName());
             $this->module->delete($module);
         }
-
     }
 
     /**
@@ -149,9 +146,10 @@ class ModuleManager
      */
     private function deleteModuleTables($moduleName)
     {
-        //TODO Find All module tables and remove
-        $output = new BufferedOutput();
-        Artisan::call('module:migrate-rollback', ['module' => strtolower($moduleName)], $output);
+        $tables = \DB::select('select table_name from information_schema.tables where table_name like "%' . $moduleName . '%"');
+        foreach ($tables as $table) {
+            \DB::statement("drop table $table->table_name");
+        }
     }
 
     /**
@@ -161,7 +159,7 @@ class ModuleManager
 
     private function deleteModuleAssets($moduleName)
     {
-        $assets = public_path().'/modules/'. strtolower($moduleName);
+        $assets = public_path() . '/modules/' . $moduleName;
         $this->finder->deleteDirectory($assets);
     }
 
