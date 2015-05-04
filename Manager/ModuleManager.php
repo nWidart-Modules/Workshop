@@ -3,6 +3,7 @@
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
+use Modules\Workshop\Events\ModuleHasBeenDeleted;
 use Pingpong\Modules\Module;
 use Symfony\Component\Yaml\Parser;
 
@@ -133,34 +134,9 @@ class ModuleManager
     {
         $coreModules = $this->getCoreModules();
         if (!isset($coreModules[$module->getLowerName()])) {
-            //TODO: $this->deleteModulePermissionsAndRoles($module->name);
-            //$this->deleteModuleAssets($module->getLowerName());
-            $this->deleteModuleTables($module->getLowerName());
             $this->module->delete($module);
+            event(new ModuleHasBeenDeleted($module));
         }
-    }
-
-    /**
-     * Delete the given module's tables
-     * @param string $moduleName
-     */
-    private function deleteModuleTables($moduleName)
-    {
-        $tables = \DB::select('select table_name from information_schema.tables where table_name like "%' . $moduleName . '%"');
-        foreach ($tables as $table) {
-            \DB::statement("drop table $table->table_name");
-        }
-    }
-
-    /**
-    * Delete given module's assets folder
-    * @param string $moduleName
-    */
-
-    private function deleteModuleAssets($moduleName)
-    {
-        $assets = public_path() . '/modules/' . $moduleName;
-        $this->finder->deleteDirectory($assets);
     }
 
     /**
