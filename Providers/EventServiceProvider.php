@@ -13,6 +13,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'Modules\Workshop\Events\ModuleHasBeenDeleted' => [
+            'Modules\Workshop\Events\Handlers\RemoveModuleTables',
             'Modules\Workshop\Events\Handlers\RemoveModuleData',
         ]
     ];

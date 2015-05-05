@@ -133,10 +133,11 @@ class ModuleManager
     public function deleteModule(Module $module)
     {
         $coreModules = $this->getCoreModules();
-        if (!isset($coreModules[$module->getLowerName()])) {
-            $this->module->delete($module);
-            event(new ModuleHasBeenDeleted($module));
+        if (isset($coreModules[$module->getLowerName()])) {
+            return;
         }
+        $this->module->delete($module);
+        event(new ModuleHasBeenDeleted($module));
     }
 
     /**
