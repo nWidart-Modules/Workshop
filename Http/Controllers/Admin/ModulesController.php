@@ -98,6 +98,23 @@ class ModulesController extends AdminBaseController
     }
 
     /**
+     * Delete the given module
+     * @param Module $module
+     * @return mixed
+     */
+    public function destroy(Module $module)
+    {
+        if ($this->isCoreModule($module)) {
+            return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])
+                ->with('error', trans('workshop::modules.module cannot be deleted'));
+        }
+
+        $this->moduleManager->deleteModule($module);
+
+        return redirect()->route('admin.workshop.modules.index')->with('success', trans('workshop::modules.module deleted'));
+    }
+
+    /**
      * Check if the given module is a core module that should be be disabled
      * @param Module $module
      * @return bool

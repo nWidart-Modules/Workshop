@@ -3,6 +3,7 @@
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
+use Modules\Workshop\Events\ModuleHasBeenDeleted;
 use Pingpong\Modules\Module;
 use Symfony\Component\Yaml\Parser;
 
@@ -123,6 +124,20 @@ class ModuleManager
             $module = $this->module->get($moduleToEnable);
             $module->enable();
         }
+    }
+
+    /**
+     * Delete the given module
+     * @param Module $module
+     */
+    public function deleteModule(Module $module)
+    {
+        $coreModules = $this->getCoreModules();
+        if (isset($coreModules[$module->getLowerName()])) {
+            return;
+        }
+        $this->module->delete($module);
+        event(new ModuleHasBeenDeleted($module));
     }
 
     /**
