@@ -187,7 +187,7 @@ class ModuleScaffold
         if (!isset($jsonContent['version'])) {
             $jsonContent['version'] = 'v0.0.1-dev';
         }
-        $moduleJsonContent = json_encode($moduleJsonContent);
+        $moduleJsonContent = json_encode($jsonContent);
         $moduleJsonContent = str_replace('"start.php"', '"composers.php"', $moduleJsonContent);
         $this->finder->put($this->getModulesPath('module.json'), $moduleJsonContent);
     }
