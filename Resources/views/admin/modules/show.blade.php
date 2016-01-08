@@ -67,7 +67,6 @@
                             <p>{{ $module->getDescription() }}</p>
                         </div>
                         <div class="col-sm-6">
-                            <p><em>More coming soon...</em></p>
                         </div>
                     </div>
                 </div>
