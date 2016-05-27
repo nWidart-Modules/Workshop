@@ -25,7 +25,23 @@ class ThemeScaffoldCommand extends Command
 
         $type = $this->choice('Would you like to create a front end or backend theme ?', ['Frontend', 'Backend'], 0);
 
-        $this->themeScaffold->setName($name)->setVendor($vendor)->forType(strtolower($type))->generate();
+        $withElixir = $this->choice('Would you like to use Elixir?', ['Yes', 'No'], 1);
+
+        var_dump($withElixir);
+        if ($withElixir == 'Yes') {
+            $elixir = $this->ask('Please enter the version of Elixir you want in the following format: 0.0.0');
+
+            $gulp = $this->ask('Please enter the version of gulp you want in the following format: 0.0.0');
+
+            $this->themeScaffold
+                ->setName($name)
+                ->setVendor($vendor)
+                ->forType(strtolower($type))
+                ->withElixir($elixir, $gulp)
+                ->generate();
+        } else {
+            $this->themeScaffold->setName($name)->setVendor($vendor)->forType(strtolower($type))->generate();
+        }
 
         $this->info("Generated a fresh theme called [$themeName]. You'll find it in the Themes/ folder");
     }
