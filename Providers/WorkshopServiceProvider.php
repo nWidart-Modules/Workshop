@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Services\Composer;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Workshop\Console\ModuleScaffoldCommand;
 use Modules\Workshop\Console\ThemeScaffoldCommand;
 use Modules\Workshop\Console\UpdateModuleCommand;
@@ -16,6 +17,7 @@ use Modules\Workshop\Scaffold\Theme\ThemeScaffold;
 
 class WorkshopServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,6 +34,11 @@ class WorkshopServiceProvider extends ServiceProvider
     {
         $this->registerCommands();
         $this->bindThemeManager();
+    }
+
+    public function boot()
+    {
+        $this->publishConfig('workshop', 'permissions');
     }
 
     /**
