@@ -72,7 +72,7 @@ class WorkshopServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->bindShared('command.asgard.module.scaffold', function ($app) {
+        $this->app->singleton('command.asgard.module.scaffold', function ($app) {
             return new ModuleScaffoldCommand($app['asgard.module.scaffold']);
         });
     }
@@ -82,7 +82,7 @@ class WorkshopServiceProvider extends ServiceProvider
      */
     private function registerUpdateCommand()
     {
-        $this->app->bindShared('command.asgard.module.update', function ($app) {
+        $this->app->singleton('command.asgard.module.update', function ($app) {
             return new UpdateModuleCommand(new Composer($app['files'], base_path()));
         });
     }
@@ -96,7 +96,7 @@ class WorkshopServiceProvider extends ServiceProvider
             return new ThemeScaffold(new ThemeGeneratorFactory(), $app['files']);
         });
 
-        $this->app->bindShared('command.asgard.theme.scaffold', function ($app) {
+        $this->app->singleton('command.asgard.theme.scaffold', function ($app) {
             return new ThemeScaffoldCommand($app['asgard.theme.scaffold']);
         });
     }
