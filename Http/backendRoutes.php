@@ -20,7 +20,7 @@ $router->group(['prefix' => '/workshop'],
         $router->get('modules/{module}', [
             'as' => 'admin.workshop.modules.show',
             'uses' => 'ModulesController@show',
-            'middleware' => 'can:workshop.modules.shop',
+            'middleware' => 'can:workshop.modules.show',
         ]);
         $router->post('modules/update', [
             'as' => 'admin.workshop.modules.update',
