@@ -439,9 +439,9 @@ class ModuleScaffoldTest extends BaseTestCase
         $lowercaseModuleName = strtolower($this->testModuleName);
 
         $matches = [
-            "flash()->success(trans('core::core.messages.resource created', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
-            "flash()->success(trans('core::core.messages.resource updated', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
-            "flash()->success(trans('core::core.messages.resource deleted', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
+            "withSuccess(trans('core::core.messages.resource created', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
+            "withSuccess(trans('core::core.messages.resource updated', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
+            "withSuccess(trans('core::core.messages.resource deleted', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
         ];
 
         foreach ($matches as $match) {
