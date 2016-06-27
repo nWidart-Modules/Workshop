@@ -6,6 +6,8 @@ versions:
             - Ability to add unreleased items in module changelog, by suffixing version with <code>@unreleased</code>
         changed:
             - Using new more flexible way of handle permissions via middleware
+        removed:
+            - Remove laracasts/flash dependency from controller stub
     "1.16.0":
         changed:
             - Use <code>$router</code> variable in routes file
