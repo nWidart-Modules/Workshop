@@ -405,7 +405,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $key = 'minimum-stability';
 
         $this->assertTrue(isset($composerJson->$key));
-        $this->assertEquals('dev', $composerJson->$key);
+        $this->assertEquals('stable', $composerJson->$key);
     }
 
     /** @test */

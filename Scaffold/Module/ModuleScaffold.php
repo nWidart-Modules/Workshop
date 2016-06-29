@@ -304,7 +304,7 @@ JSON;
             "Modules\\\\": "Modules/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
 JSON;
         $composerJson = str_replace($search, $replace, $composerJson);
