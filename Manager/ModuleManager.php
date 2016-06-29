@@ -3,7 +3,7 @@
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
-use Pingpong\Modules\Module;
+use Nwidart\Modules\Module;
 use Symfony\Component\Yaml\Parser;
 
 class ModuleManager

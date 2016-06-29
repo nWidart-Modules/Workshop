@@ -7,7 +7,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider;
 use Modules\Workshop\Providers\WorkshopServiceProvider;
 use Orchestra\Testbench\TestCase;
-use Pingpong\Modules\ModulesServiceProvider;
+use Nwidart\Modules\LaravelModulesServiceProvider;
 
 abstract class BaseTestCase extends TestCase
 {
@@ -21,7 +21,7 @@ abstract class BaseTestCase extends TestCase
         return [
             LaravelLocalizationServiceProvider::class,
             WorkshopServiceProvider::class,
-            ModulesServiceProvider::class,
+            LaravelModulesServiceProvider::class,
             HtmlServiceProvider::class,
         ];
     }
