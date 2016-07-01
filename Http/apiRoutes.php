@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Routing\Router;
-/** @var Router $router */
 
+/** @var Router $router */
 $router->group(['prefix' => 'workshop', 'middleware' => 'api.token.admin'], function (Router $router) {
     $router->post('modules/{module}/publish', [
         'as' => 'api.workshop.module.publish',

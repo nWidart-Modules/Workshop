@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Manager;
+<?php
+
+namespace Modules\Workshop\Manager;
 
 use FloatingPoint\Stylist\Theme\Exceptions\ThemeNotFoundException;
 use FloatingPoint\Stylist\Theme\Json;

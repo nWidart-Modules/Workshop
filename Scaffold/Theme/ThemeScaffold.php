@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Scaffold\Theme;
+<?php
+
+namespace Modules\Workshop\Scaffold\Theme;
 
 use Illuminate\Filesystem\Filesystem;
 use Modules\Workshop\Scaffold\Theme\Exceptions\ThemeExistsException;

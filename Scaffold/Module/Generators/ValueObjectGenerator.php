@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Scaffold\Module\Generators;
+<?php
+
+namespace Modules\Workshop\Scaffold\Module\Generators;
 
 class ValueObjectGenerator extends Generator
 {

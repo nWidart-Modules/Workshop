@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Providers;
+<?php
+
+namespace Modules\Workshop\Providers;
 
 use Modules\Core\Providers\RoutingServiceProvider as CoreRoutingServiceProvider;
 

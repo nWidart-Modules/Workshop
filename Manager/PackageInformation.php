@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Manager;
+<?php
+
+namespace Modules\Workshop\Manager;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 

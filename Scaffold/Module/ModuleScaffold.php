@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Scaffold\Module;
+<?php
+
+namespace Modules\Workshop\Scaffold\Module;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Console\Kernel;

@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Tests;
+<?php
+
+namespace Modules\Workshop\Tests;
 
 use Modules\Workshop\Scaffold\Module\ModuleScaffold;
 

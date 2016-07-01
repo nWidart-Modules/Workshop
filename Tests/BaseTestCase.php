@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Tests;
+<?php
+
+namespace Modules\Workshop\Tests;
 
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;
@@ -6,8 +8,8 @@ use Collective\Html\HtmlServiceProvider;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider;
 use Modules\Workshop\Providers\WorkshopServiceProvider;
-use Orchestra\Testbench\TestCase;
 use Nwidart\Modules\LaravelModulesServiceProvider;
+use Orchestra\Testbench\TestCase;
 
 abstract class BaseTestCase extends TestCase
 {

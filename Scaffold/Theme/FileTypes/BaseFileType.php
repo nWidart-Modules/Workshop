@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Scaffold\Theme\FileTypes;
+<?php
+
+namespace Modules\Workshop\Scaffold\Theme\FileTypes;
 
 abstract class BaseFileType
 {

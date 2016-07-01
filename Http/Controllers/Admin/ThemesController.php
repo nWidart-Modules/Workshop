@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Http\Controllers\Admin;
+<?php
+
+namespace Modules\Workshop\Http\Controllers\Admin;
 
 use FloatingPoint\Stylist\Theme\Theme;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;

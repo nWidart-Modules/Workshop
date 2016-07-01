@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Scaffold\Theme;
+<?php
+
+namespace Modules\Workshop\Scaffold\Theme;
 
 use Modules\Workshop\Scaffold\Theme\Exceptions\FileTypeNotFoundException;
 use Modules\Workshop\Scaffold\Theme\FileTypes\FileType;

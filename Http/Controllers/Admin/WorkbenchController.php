@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Http\Controllers\Admin;
+<?php
+
+namespace Modules\Workshop\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Redirect;

@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Scaffold\Theme\Traits;
+<?php
+
+namespace Modules\Workshop\Scaffold\Theme\Traits;
 
 trait FindsThemePath
 {

@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Scaffold\Theme\FileTypes;
+<?php
+
+namespace Modules\Workshop\Scaffold\Theme\FileTypes;
 
 use Modules\Workshop\Scaffold\Theme\Traits\FindsThemePath;
 

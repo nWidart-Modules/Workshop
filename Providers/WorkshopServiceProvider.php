@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Providers;
+<?php
+
+namespace Modules\Workshop\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Services\Composer;

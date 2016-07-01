@@ -1,4 +1,6 @@
-<?php namespace Modules\Workshop\Http\Controllers\Api;
+<?php
+
+namespace Modules\Workshop\Http\Controllers\Api;
 
 use FloatingPoint\Stylist\Theme\Theme;
 use Illuminate\Routing\Controller;
