@@ -1,4 +1,6 @@
-<?php namespace Modules\$MODULE_NAME$\Repositories\Doctrine;
+<?php
+
+namespace Modules\$MODULE_NAME$\Repositories\Doctrine;
 
 use Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository;
 use Modules\Core\Repositories\Doctrine\DoctrineBaseRepository;

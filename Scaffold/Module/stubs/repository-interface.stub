@@ -1,4 +1,6 @@
-<?php namespace Modules\$MODULE_NAME$\Repositories;
+<?php
+
+namespace Modules\$MODULE_NAME$\Repositories;
 
 use Modules\Core\Repositories\BaseRepository;
 
