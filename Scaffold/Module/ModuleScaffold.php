@@ -107,6 +107,8 @@ class ModuleScaffold
 
         $this->entityGenerator->forModule($this->getName())->type($this->entityType)->generate($this->entities);
         $this->valueObjectGenerator->forModule($this->getName())->type($this->entityType)->generate($this->valueObjects);
+
+        $this->addModuleToIgnoredExceptions();
     }
 
     /**
@@ -321,5 +323,19 @@ JSON;
 JSON;
         $composerJson = str_replace($search, $replace, $composerJson);
         $this->finder->put($this->getModulesPath('composer.json'), $composerJson);
+    }
+
+    /**
+     * Adding the module name to the .gitignore file so that it can be committed
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    private function addModuleToIgnoredExceptions()
+    {
+        if ($this->finder->exists($this->config->get('modules.paths.modules') . '/.gitignore') === false) {
+            return;
+        }
+        $moduleGitIgnore = $this->finder->get($this->config->get('modules.paths.modules') . '/.gitignore');
+        $moduleGitIgnore .= '!' . $this->getName() . PHP_EOL;
+        $this->finder->put($this->config->get('modules.paths.modules') . '/.gitignore', $moduleGitIgnore);
     }
 }
