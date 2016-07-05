@@ -7,6 +7,7 @@ versions:
             - Protecting api routes with api admin middleware
         changed:
             - Using new more flexible way of handle permissions via middleware
+            - Module names can have a dash in them, for instance <code>module-name</code>
         removed:
             - Remove laracasts/flash dependency from controller stub
     "1.16.0":
