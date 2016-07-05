@@ -331,11 +331,13 @@ JSON;
      */
     private function addModuleToIgnoredExceptions()
     {
-        if ($this->finder->exists($this->config->get('modules.paths.modules') . '/.gitignore') === false) {
+        $modulePath = $this->config->get('modules.paths.modules');
+
+        if ($this->finder->exists($modulePath . '/.gitignore') === false) {
             return;
         }
-        $moduleGitIgnore = $this->finder->get($this->config->get('modules.paths.modules') . '/.gitignore');
+        $moduleGitIgnore = $this->finder->get($modulePath . '/.gitignore');
         $moduleGitIgnore .= '!' . $this->getName() . PHP_EOL;
-        $this->finder->put($this->config->get('modules.paths.modules') . '/.gitignore', $moduleGitIgnore);
+        $this->finder->put($modulePath . '/.gitignore', $moduleGitIgnore);
     }
 }
