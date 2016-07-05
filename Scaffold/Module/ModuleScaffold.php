@@ -105,8 +105,8 @@ class ModuleScaffold
 
         $this->cleanUpModuleJson();
 
-        $this->entityGenerator->forModule($this->name)->type($this->entityType)->generate($this->entities);
-        $this->valueObjectGenerator->forModule($this->name)->type($this->entityType)->generate($this->valueObjects);
+        $this->entityGenerator->forModule($this->getName())->type($this->entityType)->generate($this->entities);
+        $this->valueObjectGenerator->forModule($this->getName())->type($this->entityType)->generate($this->valueObjects);
     }
 
     /**
@@ -129,6 +129,16 @@ class ModuleScaffold
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * Get the name of module will created. By default in studly case.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return studly_case($this->name);
     }
 
     /**
@@ -172,7 +182,7 @@ class ModuleScaffold
      */
     private function getModulesPath($path = '')
     {
-        return $this->config->get('modules.paths.modules') . "/{$this->name}/$path";
+        return $this->config->get('modules.paths.modules') . "/{$this->getName()}/$path";
     }
 
     /**
