@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'list resource' => 'List $PLURAL_CLASS_NAME$',
-    'create resource' => 'Create $PLURAL_CLASS_NAME$',
-    'edit resource' => 'Edit $PLURAL_CLASS_NAME$',
-    'destroy resource' => 'Destroy $PLURAL_CLASS_NAME$',
+    'list resource' => 'List $PLURAL_LOWERCASE_CLASS_NAME$',
+    'create resource' => 'Create $PLURAL_LOWERCASE_CLASS_NAME$',
+    'edit resource' => 'Edit $PLURAL_LOWERCASE_CLASS_NAME$',
+    'destroy resource' => 'Destroy $PLURAL_LOWERCASE_CLASS_NAME$',
     'title' => [
         '$PLURAL_LOWERCASE_CLASS_NAME$' => '$CLASS_NAME$',
         'create $LOWERCASE_CLASS_NAME$' => 'Create a $LOWERCASE_CLASS_NAME$',
