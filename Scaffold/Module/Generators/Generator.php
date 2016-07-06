@@ -114,7 +114,7 @@ abstract class Generator
                 '$CLASS_NAME$',
                 '$LOWERCASE_CLASS_NAME$',
                 '$PLURAL_LOWERCASE_CLASS_NAME$',
-                '$PLURAL_UCWORDS_CLASS_NAME$',
+                '$PLURAL_CLASS_NAME$',
                 '$ENTITY_TYPE$',
             ],
             [
