@@ -64,5 +64,6 @@ abstract class BaseTestCase extends TestCase
         ]);
         $app['config']->set('modules.paths.modules', realpath(__DIR__ . '/../Modules'));
         $app['config']->set('stylist.themes.paths', [base_path('Themes')]);
+        $app['config']->set('asgard.core.core.themes_path', base_path('Themes'));
     }
 }
