@@ -303,6 +303,7 @@ JSON;
         $replace = <<<JSON
 "description": "",
     "type": "asgard-module",
+    "license": "MIT", 
     "require": {
         "php": ">=5.6",
         "composer/installers": "~1.0",
