@@ -306,11 +306,11 @@ JSON;
     "require": {
         "php": ">=5.4",
         "composer/installers": "~1.0",
-        "asgardcms/core-module": "~1.0"
+        "asgardcms/core-module": "~2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
-        "orchestra/testbench": "~3.1"
+        "orchestra/testbench": "~3.2"
     },
     "autoload-dev": {
         "psr-4": {
