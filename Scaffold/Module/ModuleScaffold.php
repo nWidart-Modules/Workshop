@@ -304,7 +304,7 @@ JSON;
 "description": "",
     "type": "asgard-module",
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.6",
         "composer/installers": "~1.0",
         "asgardcms/core-module": "~2.0"
     },
