@@ -194,7 +194,7 @@ class ModuleScaffold
     private function renameVendorName()
     {
         $composerJsonContent = $this->finder->get($this->getModulesPath('composer.json'));
-        $composerJsonContent = str_replace('pingpong-modules', $this->vendor, $composerJsonContent);
+        $composerJsonContent = str_replace('nwidart', $this->vendor, $composerJsonContent);
         $this->finder->put($this->getModulesPath('composer.json'), $composerJsonContent);
     }
 

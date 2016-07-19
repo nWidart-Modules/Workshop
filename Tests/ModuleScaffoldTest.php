@@ -356,6 +356,16 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
+    public function it_should_use_correct_vendor_name_in_composer_json()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $composerJson = $this->getComposerFile();
+
+        $this->assertEquals('asgardcms/testingtestmodule', $composerJson->name);
+    }
+
+    /** @test */
     public function it_should_change_the_type_to_asgard_module()
     {
         $this->scaffoldModuleWithEloquent();
