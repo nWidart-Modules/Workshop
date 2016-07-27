@@ -31,13 +31,16 @@ class EntityGenerator extends Generator
      * Generate the given entities
      *
      * @param array $entities
+     * @param bool $regenerateSidebar
      */
-    public function generate(array $entities)
+    public function generate(array $entities, $regenerateSidebar = true)
     {
         $entityType = strtolower($this->entityType);
         $entityTypeStub = "entity-{$entityType}.stub";
 
-        $this->generateSidebarExtender($entities);
+        if ($regenerateSidebar === true) {
+            $this->generateSidebarExtender($entities);
+        }
 
         foreach ($entities as $entity) {
             $this->writeFile(
