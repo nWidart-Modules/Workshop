@@ -5,6 +5,7 @@ namespace Modules\Workshop\Providers;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Services\Composer;
 use Modules\Core\Traits\CanPublishConfiguration;
+use Modules\Workshop\Console\EntityScaffoldCommand;
 use Modules\Workshop\Console\ModuleScaffoldCommand;
 use Modules\Workshop\Console\ThemeScaffoldCommand;
 use Modules\Workshop\Console\UpdateModuleCommand;
@@ -56,6 +57,7 @@ class WorkshopServiceProvider extends ServiceProvider
             'command.asgard.module.scaffold',
             'command.asgard.module.update',
             'command.asgard.theme.scaffold',
+            EntityScaffoldCommand::class,
         ]);
     }
 
