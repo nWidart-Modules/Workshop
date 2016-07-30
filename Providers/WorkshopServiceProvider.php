@@ -42,6 +42,7 @@ class WorkshopServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishConfig('workshop', 'permissions');
+        $this->publishConfig('workshop', 'config');
     }
 
     /**
