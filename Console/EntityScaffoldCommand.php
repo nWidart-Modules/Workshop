@@ -22,7 +22,6 @@ final class EntityScaffoldCommand extends Command
         $this->entityGenerator = $entityGenerator;
     }
 
-
     public function fire()
     {
         $this->entityGenerator
