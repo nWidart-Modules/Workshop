@@ -51,7 +51,7 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
             });
 
             $group->authorize(
-                $this->auth->hasAccess('workshop.*')
+                $this->auth->hasAccess('workshop.*') or $this->auth->hasAccess('user.*') or $this->auth->hasAccess('setting.*')
             );
         });
 
