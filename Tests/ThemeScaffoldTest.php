@@ -43,6 +43,11 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->scaffold->setName($this->testThemeName)->forType('frontend')->setVendor('asgardcms')->generate();
     }
 
+    private function generateFrontendThemeWithElixir($elixir, $gulp)
+    {
+        $this->scaffold->setName($this->testThemeName)->forType('frontend')->setVendor('asgardcms')->withElixir($elixir, $gulp)->generate();
+    }
+
     public function tearDown()
     {
         $this->finder->deleteDirectory($this->testThemePath);
@@ -178,5 +183,53 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/assets/css/.gitignore'));
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/assets/js/.gitignore'));
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/assets/images/.gitignore'));
+    }
+
+    /**
+     * @group elixir
+     * @test
+     */
+    public function it_does_not_create_elixir_files_when_option_is_no()
+    {
+        $this->generateFrontendTheme();
+
+        $this->assertFalse($this->finder->isFile($this->testThemePath . '/package.json'));
+        $this->assertFalse($this->finder->isFile($this->testThemePath . '/gulpfile.js'));
+    }
+
+    /**
+     * @group elixir
+     * @test
+     */
+    public function it_creates_elixir_files_when_option_is_yes_with_defaults()
+    {
+        $expectedPackageJsonFile = $this->testThemePath . '/package.json';
+        $expectedGulpFile = $this->testThemePath . '/gulpfile.js';
+
+        $this->generateFrontendThemeWithElixir(null, null);
+
+        $this->assertTrue($this->finder->isFile($expectedPackageJsonFile), "expect '" . $expectedPackageJsonFile . "' to be created.");
+        $this->assertTrue($this->finder->isFile($expectedGulpFile), "expect " . $expectedGulpFile . " to be created.");
+
+        $this->assertTrue(str_contains($this->finder->get($expectedPackageJsonFile), '"gulp": "*",'));
+        $this->assertTrue(str_contains($this->finder->get($expectedPackageJsonFile), '"laravel-elixir": "*"'));
+    }
+
+    /**
+     * @group elixir
+     * @test
+     */
+    public function it_creates_versioned_elixir_files_when_version_set()
+    {
+        $expectedPackageJsonFile = $this->testThemePath . '/package.json';
+        $expectedGulpFile = $this->testThemePath . '/gulpfile.js';
+
+        $this->generateFrontendThemeWithElixir('5.0.0', '^3.9.1');
+
+        $this->assertTrue($this->finder->isFile($expectedPackageJsonFile), "expect '" . $expectedPackageJsonFile . "' to be created.");
+        $this->assertTrue($this->finder->isFile($expectedGulpFile), "expect " . $expectedGulpFile . " to be created.");
+
+        $this->assertTrue(str_contains($this->finder->get($expectedPackageJsonFile), '"gulp": "^3.9.1",'));
+        $this->assertTrue(str_contains($this->finder->get($expectedPackageJsonFile), '"laravel-elixir": "5.0.0"'));
     }
 }

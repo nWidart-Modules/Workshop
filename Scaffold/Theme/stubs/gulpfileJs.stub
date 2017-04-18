@@ -1,0 +1,52 @@
+var gulp = require("gulp");
+var shell = require('gulp-shell');
+var elixir = require('laravel-elixir');
+var themeInfo = require('./theme.json');
+
+
+// configure Elixir to work from Theme dir
+elixir.config.assetsPath = 'resources';
+elixir.config.publicPath = 'assets';
+elixir.config.appPath = '../../app';
+
+
+/**
+ * Since all assets need to be published to the public/ folder
+ * you can use the following custom mix for Laravel Elixir
+ * @see https://asgardcms.com/docs/themes/usage#elixir
+ */
+elixir.extend('stylistPublish', function( theme ){
+
+    new elixir.Task('stylistPublish', function() {
+        return gulp.src('').pipe(shell([
+            'php ../../artisan stylist:publish ' + theme
+        ]));
+    });
+
+});
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Elixir Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Elixir provides a clean, fluent API for defining some basic Gulp tasks
+ | for your Laravel application. By default, we are compiling the Sass
+ | file for our application, as well as publishing vendor resources.
+ |
+ */
+
+elixir(function (mix) {
+
+    /**
+     * Example of LESS based theme
+     * @see https://laravel.com/docs/5.2/elixir
+     */
+//    mix.less([
+//        "app.less", '.'
+//    ])
+//    .stylistPublish( themeInfo.name );
+
+    stylistPublish( themeInfo.name );
+});

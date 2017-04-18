@@ -108,4 +108,27 @@ class ThemeScaffold
     {
         $this->files = $files;
     }
+
+    /**
+     * @param string $elixir Version of Elixir to write to package.json
+     * @param string $gulp Version of gulp to write to package.json
+     * @return $this
+     */
+    public function withElixir($elixir="*", $gulp="*")
+    {
+        if (empty($elixir)) {
+            $elixir = '*';
+        }
+
+        if (empty($gulp)) {
+            $gulp = '*';
+        }
+
+        $this->options['elixir'] = $elixir;
+        $this->options['gulp'] = $gulp;
+
+        $this->files = array_merge($this->files, ['packageJson','gulpFileJs']);
+
+        return $this;
+    }
 }
